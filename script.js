@@ -87,7 +87,6 @@ function pause() {
 }
 
 
-
 buttonPlay.addEventListener('click', play);
 buttonPause.addEventListener('click', pause);
 
