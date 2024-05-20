@@ -73,18 +73,19 @@ function setMusic(index) {
 
 
 function play() {
-  buttonPlay.classList.add('hide')
-  buttonPause.classList.remove('hide')
+  buttonPlay.classList.toggle('hide')
+  buttonPause.classList.toggle('hide')
   music.play()
   interval = setInterval(updateMusicTime, 1000)
 }
 
 
 function pause() {
-  buttonPlay.classList.remove('hide');
-  buttonPause.classList.add('hide');
+  buttonPlay.classList.toggle('hide')
+  buttonPause.classList.toggle('hide');
   music.pause();
 }
+
 
 
 buttonPlay.addEventListener('click', play);
