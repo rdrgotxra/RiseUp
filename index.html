@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Desafio Api</title>
   <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 
@@ -13,29 +14,34 @@
   <div class="container">
     <div class="card-player">
 
+      <!-- CONTEÚDO DA MÚSICA -->
       <div class="conteudo-musica">
-        <img id="capa-musica" src="" alt="">
+        <img id="capa-musica" src="" width="600" height="600">
         <div class="desc-musica">
-          <p id="nome-musica">Pra onde eu irei?</p>
-          <span id="artista-musica">Morada</span>
+          <p id="nome-musica"></p>
+          <span id="artista-musica"></span>
         </div>
       </div>
 
+      <!-- CONTROLES -->
       <div class="controles">
         <button id="previous"><img src="./assets/voltar.png" alt="voltar"></button>
         <button id="play"><img src="./assets/play.png" alt="play"></button>
-        <button id="pause" class="hide"><svg xmlns="http://www.w3.org/2000/svg" style="width: 17px; " viewBox="0 0 320 512">
+        <button id="pause" class="hide">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width: 17px; " viewBox="0 0 320 512">
             <path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z" fill="#E1E1E6"></path>
-          </svg></button>
+          </svg>
+        </button>
         <button id="next"><img src="./assets/avancar.png" alt="avancar"></button>
       </div>
 
+      <!-- PROGRESSO -->
       <div class="container-progresso">
         <input id="progressBar" type="range" value="0" min="0" max="100" step="1">
       </div>
       <div class="tempo-musica">
         <span id="tempoAtual">00:00</span>
-        <span id="tempoTotal">06:00</span>
+        <span id="tempoTotal"></span>
       </div>
       
     </div>

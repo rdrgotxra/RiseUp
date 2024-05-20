@@ -33,9 +33,9 @@ const musicas = [
   }
 ]
 
-let music;
+let music; // defini antes p ser global. foi o melhor a fazer?
 let indexMusicaAtual = 0;
-setMusic(indexMusicaAtual) // como isso roda antes de eu definir a função?
+setMusic(indexMusicaAtual) // pq isso funciona se eu só defini a função dps?
 let interval;
 
 
@@ -52,16 +52,31 @@ function updateMusicTime() {
   tempoAtual.textContent = formatarTempo(music.currentTime);
 }
 
-music.addEventListener('loadedmetadata', function () {
-  tempoTotal.textContent = formatarTempo(music.duration);
-});
+
+function setMusic(index) {
+  if (index < 0) {
+    indexMusicaAtual = musicas.length - 1
+  }
+  if (index >= musicas.length) {
+    indexMusicaAtual = 0
+  }
+
+  music = new Audio(musicas[indexMusicaAtual].musicaPath)
+
+  artistaMusica.innerHTML = musicas[indexMusicaAtual].artista
+  nomeMusica.innerHTML = musicas[indexMusicaAtual].nome
+  capaMusica.setAttribute('src', musicas[indexMusicaAtual].capaPath)
+  music.addEventListener('loadedmetadata', () => {
+    tempoTotal.textContent = formatarTempo(music.duration)
+  })
+}
 
 
 function play() {
-  buttonPlay.classList.add('hide');
-  buttonPause.classList.remove('hide');
-  music.play();
-  interval = setInterval(updateMusicTime, 1000);
+  buttonPlay.classList.add('hide')
+  buttonPause.classList.remove('hide')
+  music.play()
+  interval = setInterval(updateMusicTime, 1000)
 }
 
 
@@ -69,22 +84,6 @@ function pause() {
   buttonPlay.classList.remove('hide');
   buttonPause.classList.add('hide');
   music.pause();
-}
-
-
-function setMusic(index) {
-  if (index < 0) {
-    indexMusicaAtualaAtual = --musicas.length;
-  }
-  if (index >= musicas.length) {
-    indexMusicaAtual = 0;
-  }
-
-  artistaMusica.innerHTML = musicas[indexMusicaAtual].artista
-  nomeMusica.innerHTML = musicas[indexMusicaAtual].nome
-  capaMusica.setAttribute('src', musicas[indexMusicaAtual].capaPath)
-
-  music = new Audio(musicas[indexMusicaAtual].musicaPath);
 }
 
 
