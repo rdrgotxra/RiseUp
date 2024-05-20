@@ -70,6 +70,11 @@ function setMusic(index) {
   music.addEventListener('loadedmetadata', () => {
     tempoTotal.textContent = formatarTempo(music.duration)
   })
+  music.addEventListener('ended', ()=>{
+    console.log('teste');
+    setMusic(++indexMusicaAtual)
+    play()
+  })
 }
 
 
