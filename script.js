@@ -33,10 +33,11 @@ const musicas = [
   }
 ]
 
-let music; // defini antes p ser global. foi o melhor a fazer?
-let indexMusicaAtual = 0;
+let music // defini antes p ser global. foi o melhor a fazer?
+let indexMusicaAtual = 0
+let playing = false
 setMusic(indexMusicaAtual) // pq isso funciona se eu só defini a função dps?
-let interval;
+let interval
 
 
 function formatarTempo(segundos) {
@@ -73,30 +74,38 @@ function setMusic(index) {
 
 
 function play() {
-  buttonPlay.classList.toggle('hide')
-  buttonPause.classList.toggle('hide')
+  buttonPlay.classList.add('hide') // o toggle me complicou mais q ajudou nesse caso
+  buttonPause.classList.remove('hide')
   music.play()
   interval = setInterval(updateMusicTime, 1000)
 }
 
 
 function pause() {
-  buttonPlay.classList.toggle('hide')
-  buttonPause.classList.toggle('hide');
+  buttonPause.classList.add('hide')
+  buttonPlay.classList.remove('hide')
   music.pause();
 }
 
 
-buttonPlay.addEventListener('click', play);
-buttonPause.addEventListener('click', pause);
+buttonPlay.addEventListener('click', () => {
+  play()
+  playing = true
+});
+
+buttonPause.addEventListener('click', () => {
+  pause()
+  playing = false
+});
 
 buttonNext.addEventListener('click', () => {
   pause();
   setMusic(++indexMusicaAtual); //incrementa globalmente
-  play();
+  if(playing == true) {play()}
 });
+
 buttonPrevious.addEventListener('click', () => {
   pause();
   setMusic(--indexMusicaAtual); //decrementa globalmente
-  play();
+  if(playing == true) {play()}
 });
