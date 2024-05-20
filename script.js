@@ -109,3 +109,9 @@ buttonPrevious.addEventListener('click', () => {
   setMusic(--indexMusicaAtual); //decrementa globalmente
   if(playing == true) {play()}
 });
+
+progressBar.addEventListener('click', () => {
+  pause()
+  music.currentTime = progressBar.value * (music.duration/100)
+  if(playing == true) {play()}
+})
